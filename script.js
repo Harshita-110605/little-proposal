@@ -3,8 +3,8 @@
   Keep the text inside quotes. You can change names and messages without changing the code below.
 */
 const CONFIG = {
-  hisName: "Your Brother's Name",
-  herName: "Her Name",
+  hisName: "Yogesh ",
+  herName: "Sanjana",
   pageTitle: "A Little Something for You 💌"
 };
 
