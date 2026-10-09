@@ -97,3 +97,9 @@ footer span { color: var(--pink-dark); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+
+.choice-tease { color: #b16b88; font-size: .82rem; margin: 0 0 12px; }
+.yes-button-alt { background: #fff0f5; border: 1px solid #f0b6cb; color: #b84f77; }
+.music-button { align-self: center; border: 1px solid #f4d2df; background: #fff8fb; color: #a85e7b; border-radius: 999px; padding: 10px 15px; font-size: .76rem; font-weight: 700; cursor: pointer; margin-bottom: 10px; }
+.music-button[aria-pressed="true"] { background: #ffe5ee; border-color: #eea5bd; }

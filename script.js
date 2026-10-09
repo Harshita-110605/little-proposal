@@ -3,8 +3,8 @@
   Keep the text inside quotes. You can change names and messages without changing the code below.
 */
 const CONFIG = {
-  hisName: "Yogesh",
-  herName: "Sanjana",
+  hisName: "Your Brother's Name",
+  herName: "Her Name",
   pageTitle: "A Little Something for You 💌"
 };
 
@@ -64,20 +64,58 @@ document.querySelectorAll(".answer").forEach((answer) => {
   });
 });
 
-// Respectful proposal responses: the page celebrates a yes but doesn't pressure an answer.
+// Two playful YES options, both leading to a celebratory ending.
 const responseBox = document.getElementById("response-box");
+function celebrateYes(message) {
+  responseBox.hidden = false;
+  responseBox.textContent = message;
+  burstHearts(42);
+}
 document.getElementById("yes-button").addEventListener("click", () => {
-  responseBox.hidden = false;
-  responseBox.textContent = "This is such a beautiful beginning. 💖 Now go find me so we can talk about all the tomorrows!";
-  burstHearts(36);
+  celebrateYes("SHE SAID YESSSS! 💖💍 Best. Answer. Ever. Now come here, future wifey, I have a lifetime of hugs to collect!");
 });
-document.getElementById("think-button").addEventListener("click", () => {
-  responseBox.hidden = false;
-  responseBox.textContent = "Of course. Take all the time you need. This question deserves an honest conversation, and I'd love to hear how you feel. 💌";
+document.getElementById("yes-again-button").addEventListener("click", () => {
+  celebrateYes("YES, OBVIOUSLY! 😭💗 Consider this your official invitation to forever. I love you more than all the stars and all the snacks combined.");
 });
 document.getElementById("replay-button").addEventListener("click", () => {
   responseBox.hidden = true;
   showScreen("welcome-screen");
+});
+
+// User-provided Haan Ke Haan audio clip. The clip begins at the supplied starting point.
+const musicToggle = document.getElementById("music-toggle");
+const musicLabel = document.getElementById("music-label");
+const musicIcon = document.getElementById("music-icon");
+const bgMusic = document.getElementById("bg-music");
+let musicOn = false;
+
+musicToggle.addEventListener("click", async () => {
+  if (!musicOn) {
+    try {
+      await bgMusic.play();
+      musicOn = true;
+      musicToggle.setAttribute("aria-pressed", "true");
+      musicLabel.textContent = "Haan Ke Haan is playing ♫";
+      musicIcon.textContent = "♥";
+    } catch (error) {
+      musicLabel.textContent = "Tap again to play Haan Ke Haan";
+      console.error("Audio playback could not start:", error);
+    }
+  } else {
+    bgMusic.pause();
+    musicOn = false;
+    musicToggle.setAttribute("aria-pressed", "false");
+    musicLabel.textContent = "Play Haan Ke Haan 💗";
+    musicIcon.textContent = "♫";
+  }
+});
+
+bgMusic.addEventListener("ended", () => {
+  // Normally the clip loops; reset the button state if playback is stopped by the browser.
+  musicOn = false;
+  musicToggle.setAttribute("aria-pressed", "false");
+  musicLabel.textContent = "Play Haan Ke Haan 💗";
+  musicIcon.textContent = "♫";
 });
 
 // Lightweight decorative heart animation, created locally with CSS (no API).
