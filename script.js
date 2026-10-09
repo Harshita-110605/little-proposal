@@ -3,7 +3,7 @@
   Keep the text inside quotes. You can change names and messages without changing the code below.
 */
 const CONFIG = {
-  hisName: "Yogesh ",
+  hisName: "Yogesh",
   herName: "Sanjana",
   pageTitle: "A Little Something for You 💌"
 };
@@ -89,33 +89,40 @@ const musicIcon = document.getElementById("music-icon");
 const bgMusic = document.getElementById("bg-music");
 let musicOn = false;
 
+function setMusicPlaying(isPlaying) {
+  musicOn = isPlaying;
+  musicToggle.setAttribute("aria-pressed", String(isPlaying));
+  musicLabel.textContent = isPlaying
+    ? "Pause Haan Ke Haan 💗"
+    : "Play Haan Ke Haan 💗";
+  musicIcon.textContent = isPlaying ? "♥" : "♫";
+}
+
+// Try to start the song as soon as the page opens.
+// Browsers often block audible autoplay; if blocked, the button remains as a fallback.
+window.addEventListener("DOMContentLoaded", async () => {
+  try {
+    await bgMusic.play();
+    setMusicPlaying(true);
+  } catch (error) {
+    setMusicPlaying(false);
+    musicLabel.textContent = "Tap to play Haan Ke Haan 💗";
+  }
+});
+
 musicToggle.addEventListener("click", async () => {
   if (!musicOn) {
     try {
       await bgMusic.play();
-      musicOn = true;
-      musicToggle.setAttribute("aria-pressed", "true");
-      musicLabel.textContent = "Haan Ke Haan is playing ♫";
-      musicIcon.textContent = "♥";
+      setMusicPlaying(true);
     } catch (error) {
-      musicLabel.textContent = "Tap again to play Haan Ke Haan";
+      musicLabel.textContent = "Tap to play Haan Ke Haan 💗";
       console.error("Audio playback could not start:", error);
     }
   } else {
     bgMusic.pause();
-    musicOn = false;
-    musicToggle.setAttribute("aria-pressed", "false");
-    musicLabel.textContent = "Play Haan Ke Haan 💗";
-    musicIcon.textContent = "♫";
+    setMusicPlaying(false);
   }
-});
-
-bgMusic.addEventListener("ended", () => {
-  // Normally the clip loops; reset the button state if playback is stopped by the browser.
-  musicOn = false;
-  musicToggle.setAttribute("aria-pressed", "false");
-  musicLabel.textContent = "Play Haan Ke Haan 💗";
-  musicIcon.textContent = "♫";
 });
 
 // Lightweight decorative heart animation, created locally with CSS (no API).
