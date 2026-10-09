@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff1f5">
+  <meta name="description" content="A little interactive love note, made just for you.">
+  <title>A Little Something for You 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <div id="sparkle-layer" aria-hidden="true"></div>
+
+  <main class="app">
+    <div class="topline"><span class="tiny-heart">♥</span> A LITTLE SOMETHING FOR YOU <span class="tiny-heart">♥</span></div>
+
+    <section class="screen active" id="welcome-screen" aria-labelledby="welcome-title">
+      <div class="sticker bounce" aria-hidden="true">💌</div>
+      <p class="eyebrow">psst… you have a tiny surprise</p>
+      <h1 id="welcome-title">Hey, <span data-her-name>you</span>!</h1>
+      <p class="intro">Someone made a little corner of the internet just for you.</p>
+      <button class="primary-button" id="open-letter">Open your letter <span>♡</span></button>
+      <p class="microcopy">best experienced with a little curiosity ✨</p>
+    </section>
+
+    <section class="screen" id="letter-screen" aria-labelledby="letter-title" hidden>
+      <div class="sticker" aria-hidden="true">🐻</div>
+      <p class="eyebrow">a note from <span data-his-name>someone special</span></p>
+      <h2 id="letter-title">A small confession…</h2>
+      <div class="letter-card">
+        <p>Some people make ordinary days feel a little more special.</p>
+        <p>For me, that's you. Your smile, your little habits, and the way you make even the simplest moments memorable mean more than I can fit on this page.</p>
+        <p class="signature">— <span data-his-name>someone special</span> 💗</p>
+      </div>
+      <button class="primary-button next-button" data-next="memory-screen">Okay, keep going <span>→</span></button>
+    </section>
+
+    <section class="screen" id="memory-screen" aria-labelledby="memory-title" hidden>
+      <div class="sticker wiggle" aria-hidden="true">🎁</div>
+      <p class="eyebrow">little things matter</p>
+      <h2 id="memory-title">Pick a tiny surprise</h2>
+      <p class="intro">Tap each gift. I put a little message inside every one.</p>
+      <div class="gift-grid">
+        <button class="gift" data-message="You have the kind of smile that can turn a rough day around. 😊" aria-label="Open gift one"><span>🎁</span><small>for your smile</small></button>
+        <button class="gift" data-message="If I could save little moments like bookmarks, I'd keep all my favorite ones with you. 📖" aria-label="Open gift two"><span>🎀</span><small>for our moments</small></button>
+        <button class="gift" data-message="This is your reminder that you are appreciated, cared for, and very, very special. 💗" aria-label="Open gift three"><span>🧸</span><small>just because</small></button>
+      </div>
+      <div class="message-box" id="gift-message" aria-live="polite">Your surprise will appear here ✨</div>
+      <button class="primary-button next-button" data-next="quiz-screen">One more thing… <span>→</span></button>
+    </section>
+
+    <section class="screen" id="quiz-screen" aria-labelledby="quiz-title" hidden>
+      <div class="sticker" aria-hidden="true">💘</div>
+      <p class="eyebrow">a very serious scientific quiz</p>
+      <h2 id="quiz-title">Ready for a question?</h2>
+      <p class="question">What is my favorite thing about you?</p>
+      <div class="answer-list">
+        <button class="answer" data-answer="A">Your smile 😊</button>
+        <button class="answer" data-answer="B">Your kind heart 🫶</button>
+        <button class="answer" data-answer="C">Honestly… everything 💗</button>
+      </div>
+      <p class="quiz-feedback" id="quiz-feedback" aria-live="polite"></p>
+      <button class="primary-button next-button" data-next="final-screen">I'm ready for the surprise <span>→</span></button>
+    </section>
+
+    <section class="screen final-screen" id="final-screen" aria-labelledby="final-title" hidden>
+      <div class="sticker pulse" aria-hidden="true">💍</div>
+      <p class="eyebrow">the question behind this little website</p>
+      <h2 id="final-title"><span data-her-name>you</span>, you make my world sweeter.</h2>
+      <p class="final-message">I don't need every day to be perfect. I just hope I get to keep choosing you through all the ordinary days, the exciting ones, and everything in between.</p>
+      <div class="big-question">Will you marry me? <span>💗</span></div>
+      <p class="intro">Take your time. Whatever you feel, your answer deserves to be yours.</p>
+      <div class="proposal-actions">
+        <button class="primary-button yes-button" id="yes-button">Yes, let's do this! 💖</button>
+        <button class="secondary-button" id="think-button">I want to talk about it 💌</button>
+      </div>
+      <div class="response-box" id="response-box" aria-live="polite" hidden></div>
+      <button class="text-button" id="replay-button">↻ Read it all again</button>
+      <p class="microcopy">made with love, one little click at a time</p>
+    </section>
+
+    <footer>made with <span aria-label="love">♥</span> and a little bit of code</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
